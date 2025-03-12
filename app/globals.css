@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+
+    --glass: 0 0% 100% / 0.8;
+    --glass-border: 240 5.9% 90% / 0.1;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --glass: 240 10% 3.9% / 0.8;
+    --glass-border: 240 3.7% 15.9% / 0.1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-sm hover:bg-muted-foreground/40 transition-colors;
+}
+
+/* Base Styles */
+a {
+  @apply text-foreground no-underline;
+}
+
+/* Typography */
+h1 {
+  @apply font-light tracking-[-0.05em] leading-[1.1] animate-fadeIn;
+}
+
+h2 {
+  @apply font-semibold tracking-[-0.025em] leading-[1.2] animate-fadeIn;
+}
+
+h3.uppercase {
+  @apply font-bold tracking-[0.05em];
+}
+
+/* Links */
+.nav-link {
+  @apply relative transition-colors duration-150;
+}
+
+.nav-link::after {
+  @apply content-[''] absolute w-full h-px -bottom-0.5 left-0 bg-primary scale-x-0 origin-right transition-transform duration-300;
+}
+
+.nav-link:hover::after {
+  @apply scale-x-100 origin-left;
+}
+
+/* Project Cards */
+.project-card {
+  @apply transition-all duration-500 origin-center hover:-translate-y-0.5;
+}
+
+/* Section Animations */
+.section-enter {
+  @apply animate-fadeIn;
+}
+
+/* Image Hover Effects */
+.image-hover {
+  @apply transition-transform duration-500 hover:scale-[1.02];
+}
+
+/* Custom Backgrounds */
+.bg-light {
+  background-color: #fafbfc;
+}
+
+/* Custom Border Colors */
+.border-light {
+  border-color: #eaeaea;
+}
+
+/* Header */
+.header-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.header-blur:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Text Styles */
+.text-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--foreground);
+}
+
+.text-caption {
+  font-size: 12px;
+  color: var(--gray);
+  transition: color 0.2s ease;
+}
+
+/* Container */
+.container-custom {
+  @apply max-w-[1200px] mx-auto px-6;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
